@@ -33,7 +33,7 @@ https://github.com/user-attachments/assets/179701eb-0fcf-4e33-86f3-c92688f508a5
 
 3. Configure environment variables:(Or set these in the Settings ⌘/Ctrl + P )
    - Copy `.env.example` to `.env`
-   - Add your OpenAI API key
+   - Add your Google Gemini API key (Get it from [Google AI Studio](https://aistudio.google.com/app/apikey))
    - Set your preferred programming language
 
 4. Start the Application:
@@ -46,13 +46,13 @@ https://github.com/user-attachments/assets/179701eb-0fcf-4e33-86f3-c92688f508a5
 
 - Node.js (v14 or higher) - only for local setup
 - npm (Node Package Manager) - only for local setup
-- OpenAI API key
+- Google Gemini API key (Free tier available at [Google AI Studio](https://aistudio.google.com/app/apikey))
 
 ## Configuration
 
 Create a `.env` file in the root directory with the following settings: ( or Just press ⌘/Ctrl + P and set it up in Settings/Config page)
 ```env
-OPENAI_API_KEY="your-api-key-here"
+GEMINI_API_KEY="your-api-key-here"  # Get your free API key from https://aistudio.google.com/app/apikey
 APP_LANGUAGE="Java"  # Or Python, JavaScript, C++, etc.
 ```
 
@@ -71,7 +71,7 @@ APP_LANGUAGE="Java"  # Or Python, JavaScript, C++, etc.
 - **Solution**: ⌘/Ctrl + ↵/Enter
 - **Reset**: ⌘/Ctrl + R
 - **Show/Hide**: ⌘/Ctrl + B
-- **Settings/Config (Configure your preferred coding language and OpenAI API key)**: ⌘/Ctrl + P 
+- **Settings/Config (Configure your preferred coding language and Gemini API key)**: ⌘/Ctrl + P 
 - **Quit**: ⌘/Ctrl + Q
 - **Move Around**: ⌘/Ctrl + Arrow Keys
 

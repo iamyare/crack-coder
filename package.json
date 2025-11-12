@@ -34,10 +34,12 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@ai-sdk/google": "^2.0.31",
+    "ai": "^5.0.92",
     "dotenv": "^16.4.7",
-    "openai": "^4.87.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "zod": "^4.1.12"
   },
   "build": {
     "appId": "com.crackcoder.app",

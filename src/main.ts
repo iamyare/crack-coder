@@ -40,7 +40,7 @@ async function ensureScreenshotDir() {
 async function loadConfig(): Promise<Config | null> {
   try {
     // First try loading from environment variables
-    const envApiKey = process.env.OPENAI_API_KEY;
+    const envApiKey = process.env.GEMINI_API_KEY;
     const envLanguage = process.env.APP_LANGUAGE;
 
     if (envApiKey && envLanguage) {
@@ -85,11 +85,11 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    frame: false,           
-    transparent: true,     
-    backgroundColor: "#00000000",  
-    hasShadow: false,    
-    alwaysOnTop: true,     
+    frame: false,
+    transparent: true,
+    backgroundColor: "#00000000",
+    hasShadow: false,
+    alwaysOnTop: true,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: true,
@@ -134,10 +134,10 @@ function registerShortcuts() {
   globalShortcut.register('CommandOrControl+Enter', handleProcessScreenshots);
   globalShortcut.register('CommandOrControl+R', handleResetQueue);
   globalShortcut.register('CommandOrControl+Q', () => app.quit());
-  
+
   // Window visibility
   globalShortcut.register('CommandOrControl+B', handleToggleVisibility);
-  
+
   // Window movement
   globalShortcut.register('CommandOrControl+Left', () => moveWindow('left'));
   globalShortcut.register('CommandOrControl+Right', () => moveWindow('right'));
@@ -189,10 +189,10 @@ async function handleTakeScreenshot() {
     const buffer = await captureScreenshot();
     const id = Date.now();
     const screenshotPath = path.join(SCREENSHOT_DIR, `${id}.png`);
-    
+
     await fs.writeFile(screenshotPath, buffer);
     const preview = `data:image/png;base64,${buffer.toString('base64')}`;
-    
+
     const screenshot = { id, preview, path: screenshotPath };
     screenshotQueue.push(screenshot);
 
@@ -206,7 +206,7 @@ async function handleTakeScreenshot() {
 
 async function handleProcessScreenshots() {
   if (isProcessing || screenshotQueue.length === 0) return;
-  
+
   isProcessing = true;
   mainWindow?.webContents.send('processing-started');
 
@@ -219,7 +219,7 @@ async function handleProcessScreenshots() {
     console.error('Error processing screenshots:', error);
     // Check if processing was cancelled
     if (!isProcessing) return;
-    
+
     // Extract the most relevant error message
     let errorMessage = 'Error processing screenshots';
     if (error?.error?.message) {
@@ -227,7 +227,7 @@ async function handleProcessScreenshots() {
     } else if (error?.message) {
       errorMessage = error.message;
     }
-    
+
     mainWindow?.webContents.send('processing-complete', JSON.stringify({
       error: errorMessage,
       approach: 'Error occurred while processing',
@@ -260,7 +260,7 @@ async function handleResetQueue() {
       console.error('Error deleting screenshot:', error);
     }
   }
-  
+
   screenshotQueue = [];
   mainWindow?.webContents.send('queue-reset');
 }
@@ -276,10 +276,10 @@ function handleToggleVisibility() {
 
 function moveWindow(direction: 'left' | 'right' | 'up' | 'down') {
   if (!mainWindow) return;
-  
+
   const [x, y] = mainWindow.getPosition();
   const moveAmount = 50;
-  
+
   switch (direction) {
     case 'left':
       mainWindow.setPosition(x - moveAmount, y);

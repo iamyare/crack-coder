@@ -22,7 +22,7 @@ const ConfigScreen: React.FC<ConfigProps> = ({ onSave, initialConfig }) => {
         <h2>Configuration</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="apiKey">OpenAI API Key</label>
+            <label htmlFor="apiKey">Google Gemini API Key</label>
             <div className="api-key-input">
               <input
                 type={showApiKey ? "text" : "password"}
@@ -30,7 +30,7 @@ const ConfigScreen: React.FC<ConfigProps> = ({ onSave, initialConfig }) => {
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
                 required
-                placeholder="sk-..."
+                placeholder="AIza..."
                 spellCheck="false"
                 autoComplete="off"
               />
